@@ -1,0 +1,15 @@
+" Press ? for help
+
+.. (up a dir)
+</turing/1module/battleship/
+▾ [✗]lib/
+    battleship.rb
+    [✹]board.rb
+    [✭]human.rb
+    messages.rb
+    [✭]player.rb
+    [✭]ship.rb
+▾ [✗]test/
+    battleship_test.rb
+    [✹]board_test.rb
+    ships_test.rb
