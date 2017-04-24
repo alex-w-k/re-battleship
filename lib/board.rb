@@ -148,6 +148,4 @@ class Board
   def place(letter, number, tile)
     set_ship(row(letter), number.to_i, tile)
   end
-
-
 end

@@ -9,12 +9,13 @@ class BattleShip
   def initialize
     rows = 0
     cols = 0
+    puts 'If you do not see Battleship in ascii art please resize your window until you do! 😀'
+
     until cols >= 86
       rows, cols = $stdout.winsize
-      puts "Please widen your terminal window"
     end
 
-    Messages.welcome
+    puts Messages.welcome
   end
 
 end
