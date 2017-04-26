@@ -61,6 +61,10 @@ class Player
     @ship_1.destroyed? && @ship_2.destroyed?
   end
 
+  def end_turn
+
+  end
+
   def overlay(other_player)
     ship_board.overlay(other_player.ship_board)
   end
