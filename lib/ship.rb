@@ -1,4 +1,5 @@
 class Ship
+  attr_reader :hit_points
 
   def initialize(hit_points)
     @hit_points = hit_points

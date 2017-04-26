@@ -87,4 +87,4 @@ class BattleShip
 
 end
 
-b = BattleShip.new
+# b = BattleShip.newA

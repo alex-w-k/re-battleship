@@ -1,19 +1,18 @@
 gem 'minitest', '~>5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/ships'
+require './lib/ship'
 
 class ShipsTest < MiniTest::Test
 
   def test_can_ships_initialize
-    ships = Ships.new
-    assert_instance_of Ships, ships
+    ship = Ship.new(3)
+    assert_instance_of Ship, ship
   end
 
-  def test_can_store_two_ships_positions
-    ships = Ships.new
-
+  def test_ship_can_take_damage
+  	s = Ship.new(3)
+  	s.hit
+  	assert_equal 2, s.hit_points
   end
-
-
 end
