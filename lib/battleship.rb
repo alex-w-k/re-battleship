@@ -41,6 +41,7 @@ class BattleShip
 
   def instructions
     puts Messages.instructions
+    play
   end
 
   def start
@@ -87,4 +88,4 @@ class BattleShip
 
 end
 
-# b = BattleShip.newA
+b = BattleShip.new
