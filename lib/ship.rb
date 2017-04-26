@@ -5,7 +5,7 @@ class Ship
   end
 
   def destroyed?
-    if hit_points == 0
+    if @hit_points == 0
       true
     else
       false
@@ -13,7 +13,7 @@ class Ship
   end
 
   def hit
-    hit_points -= 1
+    @hit_points -= 1
   end
 
 end

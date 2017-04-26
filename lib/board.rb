@@ -2,6 +2,8 @@
 require './lib/messages'
 
 class Board
+  include Messages
+
   attr_reader :board, :fired
 
   def initialize
@@ -20,20 +22,20 @@ class Board
     @miss  = '❌'
   end
 
-  def border
-    '+=========+'
-  end
-
   def draw_ship_board
-    @board.map do |row|
-      row.join('  ')
-    end
+    Board.draw_board(board)
   end
 
   def draw_fired_board
-    @fired.map do |row|
-      row.join(' ')
+    Board.draw_board(@fired)
+  end
+
+  def self.draw_board(board)
+    puts '+=========+'
+    board.each do |row|
+      puts row.join(" ")
     end
+    puts '+=========+'
   end
 
   def check_location(row, column)
@@ -49,9 +51,24 @@ class Board
     @board[row(letter)][number.to_i]
   end
 
+  def track_shots_fired(coordinate, status)
+    list = coordinate.chars
+    if status == 'hit'
+      status = '💥'
+    else
+      status = '❌'
+    end
+    set_shot_history(row(list[0]), list[1].to_i, status)
+  end
+
   def target_is_on_board?(target)
     target = target.chars
     row(target[0]).between?(1, 4) && target[1].to_i.between?(1, 4)
+  end
+
+  def target_is_repeat?(target)
+    target = target.chars
+    @fired[row(target[0])][target[1].to_i] != "🌊"
   end
 
   def small_ship_valid?(x, y)
@@ -142,10 +159,27 @@ class Board
   end
 
   def set_shot_history(row, column, tile)
-    @shots_fired_board[row][column] = tile
+    @fired[row][column] = tile
   end
 
   def place(letter, number, tile)
     set_ship(row(letter), number.to_i, tile)
+  end
+
+  def overlay(other_board)
+    result = []
+    @fired.each_index do |row|
+      result << []
+      fired[row].each_index do |column|
+        tile = fired[row][column]
+        ship = other_board.board[row][column]
+        if tile != "🌊"
+          result[row][column] = tile
+        else
+          result[row][column] = ship
+        end
+      end
+    end
+    result
   end
 end
