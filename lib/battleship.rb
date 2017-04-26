@@ -41,7 +41,6 @@ class BattleShip
 
   def instructions
     puts Messages.instructions
-    play
   end
 
   def start
@@ -51,8 +50,8 @@ class BattleShip
     instructions
     response = gets.chomp
     play if response == 'p' || response == 'play'
-    instructions if response == 'i' || response == 'instructions'
-    quit if response == 'q' || response =='quit'
+    start if response == 'i' || response == 'instructions'
+    quit if response == 'q' || response =='quit' || response == 'exit'
   end
 
   def play
